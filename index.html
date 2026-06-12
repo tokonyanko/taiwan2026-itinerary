@@ -30,7 +30,7 @@
   }
   header .route { font-size:.72rem; letter-spacing:.28em; opacity:.75; }
   header h1 { font-size:1.12rem; font-weight:700; letter-spacing:.06em; margin-top:2px; }
-  header .dates { font-size:.78rem; opacity:.85; margin-top:2px; }
+  header .dates { font-size:.9rem; opacity:1; margin-top:2px; }
 
   /* ---------- タブ（下部固定） ---------- */
   nav {
@@ -41,8 +41,8 @@
   }
   nav button {
     flex:1; padding:10px 0 9px; border:none; background:transparent;
-    color:rgba(246,244,238,.62); font-family:inherit; cursor:pointer;
-    font-size:.7rem; line-height:1.3;
+    color:rgba(246,244,238,.78); font-family:inherit; cursor:pointer;
+    font-size:.8rem; line-height:1.3;
   }
   nav button strong { display:block; font-size:.95rem; font-weight:700; }
   nav button.active { color:#F6F4EE; box-shadow: inset 0 3px 0 #C2452D; background:rgba(255,255,255,.06); }
@@ -72,7 +72,7 @@
   .ticket .d .dw { font-size:.68rem; letter-spacing:.15em; margin-top:3px; }
   .ticket .body { margin-left:54px; }
   .ticket .ti { font-size:1rem; font-weight:700; color:#1E5A50; }
-  .ticket .su { font-size:.74rem; color:#6E6A5E; margin-top:1px; }
+  .ticket .su { font-size:.86rem; color:#45413A; margin-top:1px; }
 
   /* ---------- タイムライン ---------- */
   .tl { list-style:none; }
@@ -93,12 +93,12 @@
   .tl li.tbd::after { border-color:#C2452D; border-style:dashed; }
   .tl .time {
     position:absolute; left:0; top:3px; width:52px; text-align:right;
-    font-size:.8rem; font-weight:700; color:#1E5A50;
+    font-size:.86rem; font-weight:700; color:#1E5A50;
   }
-  .tl li.move .time { color:#9A958A; font-weight:400; }
-  .tl .what { font-size:.92rem; font-weight:700; }
-  .tl li.move .what { font-weight:400; color:#56524A; font-size:.86rem; }
-  .tl .note { font-size:.8rem; color:#6E6A5E; margin-top:2px; }
+  .tl li.move .time { color:#6E6A5E; font-weight:400; }
+  .tl .what { font-size:.98rem; font-weight:700; }
+  .tl li.move .what { font-weight:400; color:#3A372F; font-size:.92rem; }
+  .tl .note { font-size:.9rem; color:#45413A; margin-top:2px; }
   .tl .note a { color:#1E5A50; }
 
   /* マーカー番号バッジ（リスト内） */
@@ -113,30 +113,30 @@
 
   /* チップ */
   .chip {
-    display:inline-block; font-size:.66rem; font-weight:700; letter-spacing:.05em;
+    display:inline-block; font-size:.74rem; font-weight:700; letter-spacing:.05em;
     border:1px solid #1E5A50; color:#1E5A50; border-radius:999px;
     padding:1px 8px; margin:3px 4px 0 0; vertical-align:1px;
   }
   .chip.meal { background:#1E5A50; color:#F6F4EE; }
-  .chip.eps { border-color:#9A958A; color:#6E6A5E; }
+  .chip.eps { border-color:#6E6A5E; color:#45413A; }
 
   /* 後日追加カード */
   .tbd-card {
     border:2px dashed #C2452D; border-radius:10px; background:#FDF6F4;
     padding:10px 12px; margin-top:4px;
   }
-  .tbd-card .t { color:#C2452D; font-weight:700; font-size:.84rem; }
-  .tbd-card .s { font-size:.78rem; color:#6E6A5E; margin-top:2px; }
+  .tbd-card .t { color:#C2452D; font-weight:700; font-size:.9rem; }
+  .tbd-card .s { font-size:.86rem; color:#45413A; margin-top:2px; }
 
   /* プランA/B */
   .plans { display:grid; grid-template-columns:1fr; gap:10px; margin-top:6px; }
   .plan { border:1.5px solid #1E5A50; border-radius:10px; background:#fff; padding:10px 12px; }
-  .plan h4 { font-size:.84rem; color:#1E5A50; }
-  .plan p { font-size:.8rem; color:#56524A; margin-top:4px; }
+  .plan h4 { font-size:.92rem; color:#1E5A50; }
+  .plan p { font-size:.88rem; color:#3A372F; margin-top:4px; }
 
   .memo {
     background:#fff; border-left:4px solid #1E5A50; border-radius:0 8px 8px 0;
-    padding:10px 12px; font-size:.8rem; color:#56524A; margin:14px 0 0;
+    padding:10px 12px; font-size:.88rem; color:#3A372F; margin:14px 0 0;
   }
   .memo strong { color:#1E5A50; }
 
@@ -150,7 +150,7 @@
   .city-toggle button.active { background:#1E5A50; color:#F6F4EE; }
   #map { height:46vh; min-height:300px; border-radius:12px; border:1.5px solid #1E5A50; z-index:1; }
 
-  .legend { display:flex; gap:14px; align-items:center; font-size:.74rem; color:#56524A; margin:8px 2px 12px; }
+  .legend { display:flex; gap:14px; align-items:center; font-size:.84rem; color:#3A372F; margin:8px 2px 12px; }
   .legend .pin { margin-right:2px; }
 
   .spot-list { list-style:none; }
@@ -161,10 +161,10 @@
   }
   .spot-list li:active { background:#F0EDE3; }
   .spot-list .pin { flex:none; margin-top:2px; }
-  .spot-list .nm { font-size:.88rem; font-weight:700; }
-  .spot-list .cat { font-size:.68rem; color:#1E5A50; font-weight:700; letter-spacing:.06em; }
-  .spot-list .ds { font-size:.76rem; color:#6E6A5E; }
-  .spot-list .gm { font-size:.72rem; }
+  .spot-list .nm { font-size:.96rem; font-weight:700; }
+  .spot-list .cat { font-size:.78rem; color:#1E5A50; font-weight:700; letter-spacing:.06em; }
+  .spot-list .ds { font-size:.88rem; color:#45413A; }
+  .spot-list .gm { font-size:.84rem; }
   .spot-list .gm a { color:#1E5A50; font-weight:700; }
 
   /* Leafletカスタムマーカー */
@@ -175,7 +175,7 @@
     font-family:"BIZ UDPGothic","Hiragino Kaku Gothic ProN",sans-serif; }
   .mk.tpe { background:#3A6B9B; }
   .mk.hotel { background:#C2452D; border-radius:7px; width:30px; height:30px; font-size:1rem; }
-  .leaflet-popup-content { font-family:"BIZ UDPGothic","Hiragino Kaku Gothic ProN",sans-serif; font-size:.82rem; line-height:1.5; margin:10px 12px; }
+  .leaflet-popup-content { font-family:"BIZ UDPGothic","Hiragino Kaku Gothic ProN",sans-serif; font-size:.9rem; line-height:1.55; margin:10px 12px; }
   .leaflet-popup-content b { color:#1E5A50; }
   .leaflet-popup-content a { color:#C2452D; font-weight:700; }
 
