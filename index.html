@@ -303,35 +303,43 @@ const CITIES = {
   taichung: {
     label: "台中", center: [24.1399, 120.6790], zoom: 15, cls: "",
     hotel: { name:"53 Hotel（53行館）", lat:24.1375738, lng:120.6834730,
-             note:"台中駅 徒歩5分｜7/13泊" },
+             note:"台中駅 徒歩5分｜7/13泊", web:"https://www.53hotel.com.tw/" },
     spots: [
       { n:1,  name:"老骨頭飯糰", cat:"朝食", lat:24.1366843, lng:120.6803560,
-        note:"台湾おにぎりの名店 4.6★。火 6:30–11:30（水曜定休）" },
+        note:"台湾おにぎりの名店 4.6★。火 6:30–11:30（水曜定休）",
+        web:"https://www.facebook.com/220808211847960" },
       { n:2,  name:"永和黒豆漿", cat:"朝食・豆乳", lat:24.1324890, lng:120.6899519,
         note:"黒豆の豆漿が名物。火曜は10:30まで（日曜定休）" },
       { n:3,  name:"台中第二市場（山河魯肉飯・老賴紅茶）", cat:"朝食・昼食", lat:24.1424184, lng:120.6787570,
-        note:"ローカル朝ごはんの聖地。火 7:30–15:30（月曜定休）現金のみ" },
+        note:"ローカル朝ごはんの聖地。火 7:30–15:30（月曜定休）現金のみ",
+        web:"http://travel.taichung.gov.tw/zh-tw/Attractions/Intro/70/%E8%87%BA%E4%B8%AD%E5%B8%82%E7%AC%AC%E4%BA%8C%E5%B8%82%E5%A0%B4" },
       { n:4,  name:"沁園春", cat:"昼食・夕食", lat:24.1395525, lng:120.6826383,
-        note:"1949年創業の上海料理。11:00–14:00 / 17:30–21:00（水曜定休）要予約" },
+        note:"1949年創業の上海料理。11:00–14:00 / 17:30–21:00（水曜定休）要予約",
+        web:"https://qin-yuan-chun1949.com/" },
       { n:5,  name:"中華路夜市", cat:"夕食", lat:24.1444126, lng:120.6758976,
         note:"地元密着の老舗夜市。16:00–深夜。現金のみ" },
       { n:6,  name:"宮原眼科", cat:"スイーツ・お土産", lat:24.1378278, lng:120.6835552,
-        note:"ホテルの目の前。アイスと美しい缶入り菓子。10:00–21:00" },
+        note:"ホテルの目の前。アイスと美しい缶入り菓子。10:00–21:00",
+        web:"http://www.miyahara.com.tw/" },
       { n:7,  name:"第四信用合作社", cat:"スイーツ", lat:24.1390204, lng:120.6819297,
-        note:"宮原眼科の姉妹店。座席ありでゆっくりアイス。10:00–21:00" },
+        note:"宮原眼科の姉妹店。座席ありでゆっくりアイス。10:00–21:00",
+        web:"https://www.facebook.com/tc4cbank/" },
       { n:8,  name:"太陽堂老店（自由路本店）", cat:"お土産", lat:24.1390279, lng:120.6809680,
-        note:"台中名物・太陽餅の老舗 4.5★。8:00–22:00" },
+        note:"台中名物・太陽餅の老舗 4.5★。8:00–22:00",
+        web:"https://www.suncakelei.com.tw/zh-TW" },
       { n:9,  name:"Shan Shin（山時）", cat:"夕食", lat:24.1411018, lng:120.6606189,
-        note:"4.8★の台湾家庭料理。ホテルからタクシー約10分。要予約" }
+        note:"4.8★の台湾家庭料理。ホテルからタクシー約10分。要予約",
+        web:"https://www.shan-shin.com/" }
     ]
   },
   taipei: {
     label: "台北", center: [25.0405, 121.5300], zoom: 14, cls: "tpe",
     hotel: { name:"ホテルグレイスリー台北", lat:25.0431061, lng:121.5306983,
-             note:"MRT忠孝新生駅直結｜7/14–16泊" },
+             note:"MRT忠孝新生駅直結｜7/14–16泊", web:"https://taipei.gracery.com/" },
     spots: [
       { n:1,  name:"阜杭豆漿", cat:"朝食・豆乳", lat:25.0442333, lng:121.5248433,
-        note:"豆乳朝ごはんの聖地。5:30–12:30（月曜定休）開店直後が狙い目。現金のみ" },
+        note:"豆乳朝ごはんの聖地。5:30–12:30（月曜定休）開店直後が狙い目。現金のみ",
+        web:"https://www.facebook.com/pages/%E8%8F%AF%E5%B1%B1%E5%B8%82%E5%A0%B4-%E9%98%9C%E6%9D%AD%E8%B1%86%E6%BC%BF/154088941341874" },
       { n:2,  name:"青島飯糰", cat:"朝食", lat:25.0450452, lng:121.5176011,
         note:"紫米飯糰の人気屋台 4.4★。毎日6:30–11:00" },
       { n:3,  name:"Master of Rice Ball（飯糰之王）", cat:"朝食", lat:25.0454325, lng:121.5170891,
@@ -341,17 +349,23 @@ const CITIES = {
       { n:5,  name:"杭州小籠湯包", cat:"昼食", lat:25.0340691, lng:121.5237230,
         note:"ビブグルマン常連の小籠包。11:00–14:30 / 16:30–21:00。開店直後着が目安" },
       { n:6,  name:"華山1914文創園区", cat:"お土産・散策", lat:25.0440698, lng:121.5293583,
-        note:"ホテル徒歩5分。台湾デザイン雑貨とカフェ。11:00–21:00" },
+        note:"ホテル徒歩5分。台湾デザイン雑貨とカフェ。11:00–21:00",
+        web:"http://www.huashan1914.com/" },
       { n:7,  name:"LAI HAO（來好）", cat:"お土産", lat:25.0327560, lng:121.5292180,
-        note:"永康街のセンス系土産店 4.9★。9:30–21:30" },
+        note:"永康街のセンス系土産店 4.9★。9:30–21:30",
+        web:"https://www.laihao.com.tw/" },
       { n:8,  name:"金雞母 Jingimoo", cat:"スイーツ", lat:25.0309700, lng:121.5293100,
-        note:"焦がしブリュレ系かき氷 4.6★。12:30–20:30" },
+        note:"焦がしブリュレ系かき氷 4.6★。12:30–20:30",
+        web:"https://www.jingimoo.com/" },
       { n:9,  name:"思慕昔 Smoothie House", cat:"スイーツ", lat:25.0325219, lng:121.5298132,
-        note:"マンゴーかき氷の有名店。7月は生マンゴーの旬！9:30–21:00" },
+        note:"マンゴーかき氷の有名店。7月は生マンゴーの旬！9:30–21:00",
+        web:"http://www.smoothiehouse.com/" },
       { n:10, name:"佳德糕餅 Chia Te", cat:"お土産", lat:25.0512434, lng:121.5614407,
-        note:"パイナップルケーキの代表格。賞味期限約2週間→帰国直前に。8:30–20:30" },
+        note:"パイナップルケーキの代表格。賞味期限約2週間→帰国直前に。8:30–20:30",
+        web:"https://www.chiate88.com/" },
       { n:11, name:"SunnyHills（微熱山丘）", cat:"お土産", lat:25.0578988, lng:121.5571641,
-        note:"お茶と試食のおもてなし。松山空港から車5分。10:00–18:00" }
+        note:"お茶と試食のおもてなし。松山空港から車5分。10:00–18:00",
+        web:"http://www.sunnyhills.com.tw/index/zh-tw/" }
     ]
   }
 };
@@ -385,6 +399,11 @@ function markerIcon(text, cls){
     iconSize:[26,26], iconAnchor:[13,13], popupAnchor:[0,-12] });
 }
 function gmaps(lat,lng){ return `https://maps.google.com/?q=${lat},${lng}`; }
+function webA(w, arrow){
+  if (!w) return "";
+  const label = w.indexOf("facebook.com") > -1 ? "公式Facebook" : "公式サイト";
+  return `<a href="${w}" target="_blank" rel="noopener">${label}${arrow ? " ↗" : ""}</a>${arrow ? "　" : "<br>"}`;
+}
 
 function initMap(){
   if (!map){
@@ -408,13 +427,13 @@ function renderCity(key){
   // ホテル（★）
   const h = c.hotel;
   L.marker([h.lat,h.lng], { icon: markerIcon("★","hotel"), zIndexOffset:1000 })
-    .bindPopup(`<b>★ ${h.name}</b><br>${h.note}<br><a href="${gmaps(h.lat,h.lng)}" target="_blank" rel="noopener">Googleマップで開く</a>`)
+    .bindPopup(`<b>★ ${h.name}</b><br>${h.note}<br>${webA(h.web)}<a href="${gmaps(h.lat,h.lng)}" target="_blank" rel="noopener">Googleマップで開く</a>`)
     .addTo(layerGroup);
 
   // 番号マーカー
   c.spots.forEach(s => {
     const mk = L.marker([s.lat,s.lng], { icon: markerIcon(s.n, c.cls) })
-      .bindPopup(`<b>${s.n}. ${s.name}</b><br>${s.note}<br><a href="${gmaps(s.lat,s.lng)}" target="_blank" rel="noopener">Googleマップで開く</a>`)
+      .bindPopup(`<b>${s.n}. ${s.name}</b><br>${s.note}<br>${webA(s.web)}<a href="${gmaps(s.lat,s.lng)}" target="_blank" rel="noopener">Googleマップで開く</a>`)
       .addTo(layerGroup);
     markers[s.n] = mk;
   });
@@ -425,7 +444,7 @@ function renderCity(key){
   const ul = document.getElementById("spot-list");
   ul.innerHTML = "";
   const hotelLi = document.createElement("li");
-  hotelLi.innerHTML = `<span class="pin star">★</span><div><div class="nm">${h.name}</div><div class="ds">${h.note}</div><div class="gm"><a href="${gmaps(h.lat,h.lng)}" target="_blank" rel="noopener">Googleマップ ↗</a></div></div>`;
+  hotelLi.innerHTML = `<span class="pin star">★</span><div><div class="nm">${h.name}</div><div class="ds">${h.note}</div><div class="gm">${webA(h.web,true)}<a href="${gmaps(h.lat,h.lng)}" target="_blank" rel="noopener">Googleマップ ↗</a></div></div>`;
   hotelLi.addEventListener("click", e => {
     if (e.target.tagName !== "A"){ map.setView([h.lat,h.lng], 17); window.scrollTo({top:0, behavior:"smooth"}); }
   });
@@ -433,7 +452,7 @@ function renderCity(key){
 
   c.spots.forEach(s => {
     const li = document.createElement("li");
-    li.innerHTML = `<span class="pin ${c.cls}">${s.n}</span><div><div class="nm">${s.name}</div><div class="cat">${s.cat}</div><div class="ds">${s.note}</div><div class="gm"><a href="${gmaps(s.lat,s.lng)}" target="_blank" rel="noopener">Googleマップ ↗</a></div></div>`;
+    li.innerHTML = `<span class="pin ${c.cls}">${s.n}</span><div><div class="nm">${s.name}</div><div class="cat">${s.cat}</div><div class="ds">${s.note}</div><div class="gm">${webA(s.web,true)}<a href="${gmaps(s.lat,s.lng)}" target="_blank" rel="noopener">Googleマップ ↗</a></div></div>`;
     li.addEventListener("click", e => {
       if (e.target.tagName !== "A"){
         map.setView([s.lat,s.lng], 17);
