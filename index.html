@@ -336,7 +336,8 @@ const CITIES = {
         note:"ホテル徒歩3分！旧化粧品工場リノベの雑貨＆カフェ空間 4.4★。火 11:00–20:00（月曜定休）→14日の昼前に",
         web:"https://www.fusionspace1962.com/" },
       { n:11, name:"審計新村", cat:"雑貨・文創", lat:24.1446116, lng:120.6628411,
-        note:"旧宿舎群まるごとクラフト雑貨の村。タクシー約10分。お店は11時過ぎから（14日は時間に余裕があれば）" }
+        note:"旧宿舎群まるごとクラフト雑貨の村。タクシー約10分。お店は11時過ぎから（14日は時間に余裕があれば）",
+        web:"https://www.instagram.com/shenji.368/" }
     ]
   },
   taipei: {
@@ -417,7 +418,8 @@ function markerIcon(text, cls){
 function gmaps(lat,lng){ return `https://maps.google.com/?q=${lat},${lng}`; }
 function webA(w, arrow){
   if (!w) return "";
-  const label = w.indexOf("facebook.com") > -1 ? "公式Facebook" : "公式サイト";
+  const label = w.indexOf("instagram.com") > -1 ? "公式Instagram"
+              : w.indexOf("facebook.com") > -1 ? "公式Facebook" : "公式サイト";
   return `<a href="${w}" target="_blank" rel="noopener">${label}${arrow ? " ↗" : ""}</a>${arrow ? "　" : "<br>"}`;
 }
 
