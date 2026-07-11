@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>質問リスト|台湾施設訪問 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Noto+Sans+TC:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#156082; --teal-deep:#0E4560; --sky:#00B0F0;
+    --paper:#F6F9FB; --ink:#1C2B33; --en:#1F5C8B;
+    --red:#C00000; --card:#FFFFFF; --line:#DCE8EF;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{
+    font-family:"BIZ UDPGothic","Hiragino Sans",sans-serif;
+    background:var(--paper); color:var(--ink);
+    padding-bottom:60px;
+  }
+  header{
+    position:sticky; top:0; z-index:20;
+    background:linear-gradient(135deg,var(--teal-deep),var(--teal));
+    color:#fff; padding:14px 16px 10px;
+    padding-top:calc(14px + env(safe-area-inset-top));
+  }
+  header h1{font-size:17px; letter-spacing:.02em}
+  header .sub{font-size:11.5px; color:#BFE3F2; margin-top:2px}
+  .toolbar{display:flex; gap:8px; align-items:center; margin-top:10px}
+  .rate{display:flex; border:1px solid rgba(255,255,255,.5); border-radius:99px; overflow:hidden}
+  .rate button{
+    background:transparent; border:none; color:#DCEFF8;
+    font-family:inherit; font-size:12px; padding:5px 12px; cursor:pointer;
+  }
+  .rate button.on{background:#fff; color:var(--teal); font-weight:700}
+  #starOnly{
+    background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.5);
+    color:#fff; border-radius:99px; font-family:inherit; font-size:12px; padding:5px 12px; cursor:pointer;
+  }
+  #starOnly.on{background:#fff; color:var(--red); font-weight:700}
+  #stopBtn{
+    margin-left:auto; background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.5);
+    color:#fff; border-radius:99px; font-family:inherit; font-size:12px; padding:5px 14px; cursor:pointer;
+  }
+  nav{
+    position:sticky; top:0; z-index:19;
+    display:flex; gap:8px; overflow-x:auto; padding:10px 16px;
+    background:var(--paper); border-bottom:1px solid var(--line);
+    scrollbar-width:none;
+  }
+  nav::-webkit-scrollbar{display:none}
+  nav a{
+    flex:0 0 auto; text-decoration:none; font-size:12.5px; font-weight:700;
+    color:var(--teal); background:#fff; border:1.5px solid var(--teal);
+    border-radius:99px; padding:6px 14px;
+  }
+  main{max-width:680px; margin:0 auto; padding:4px 14px}
+  .sec{margin-top:22px}
+  .sec-head{
+    background:var(--teal); color:#fff; border-radius:10px;
+    padding:10px 14px; margin-bottom:10px;
+  }
+  .sec-head b{font-size:15px}
+  .sec-head span{display:block; font-size:11.5px; color:#BFE3F2; margin-top:2px}
+  .grp{
+    font-size:12.5px; font-weight:700; color:var(--teal);
+    border-bottom:2px solid var(--sky);
+    padding:2px 2px 4px; margin:16px 2px 10px;
+  }
+  .grp small{font-weight:400; color:var(--en); margin-left:6px}
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:14px 14px 12px; margin-bottom:12px;
+    box-shadow:0 1px 3px rgba(21,96,130,.06);
+    transition:box-shadow .2s, border-color .2s;
+  }
+  .card.playing{border-color:var(--sky); box-shadow:0 0 0 3px rgba(0,176,240,.18)}
+  .jp{font-size:14.5px; line-height:1.65}
+  .jp .star{color:var(--red); font-weight:700}
+  .en{font-size:12.5px; line-height:1.55; color:var(--en); margin-top:7px}
+  .zh-row{
+    display:flex; align-items:center; gap:12px;
+    margin-top:10px; padding-top:10px; border-top:1px dashed var(--line);
+  }
+  .zh{
+    flex:1; font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;
+    font-size:16px; font-weight:500; line-height:1.6; color:var(--teal-deep);
+  }
+  .say{
+    flex:0 0 auto; width:46px; height:46px; border-radius:50%;
+    border:none; cursor:pointer; color:#fff; background:var(--teal);
+    display:grid; place-items:center;
+    box-shadow:0 2px 6px rgba(21,96,130,.35);
+  }
+  .say:active{transform:scale(.94)}
+  .say svg{width:22px; height:22px; fill:#fff}
+  .card.playing .say{background:var(--sky)}
+  body.staronly .card:not(.pri){display:none}
+  body.staronly .grp.nopri{display:none}
+  .tips{
+    margin-top:26px; background:#EAF3F8; border-radius:12px;
+    padding:14px; font-size:12px; line-height:1.7; color:#3A5A6B;
+  }
+  .tips b{color:var(--teal)}
+  #voiceNote{display:none; margin:10px auto 0; max-width:680px;
+    background:#FDF3E7; border:1px solid #F0D9B8; border-radius:10px;
+    padding:10px 14px; font-size:12px; line-height:1.7; color:#7A5A2E}
+  @media (prefers-reduced-motion: reduce){ *{transition:none !important} }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>質問リスト|台湾施設訪問</h1>
+  <div class="sub">2026.7.14-15|スピーカーで中文読み上げ</div>
+  <div class="toolbar">
+    <div class="rate" role="group" aria-label="読み上げ速度">
+      <button id="rSlow">ゆっくり</button>
+      <button id="rNorm" class="on">ふつう</button>
+    </div>
+    <button id="starOnly">★のみ</button>
+    <button id="stopBtn">■ 停止</button>
+  </div>
+</header>
+
+<div id="voiceNote">
+  この端末に中国語の音声が見つかりません。iPhoneの場合: 設定 → アクセシビリティ → 読み上げコンテンツ → 声 → 中国語 から「Meijia(台湾)」等を追加してください。
+</div>
+
+<nav>
+  <a href="#ktgh">7/14 光田</a>
+  <a href="#shh">7/15午前 雙和</a>
+  <a href="#tactc">7/15午後 TACTC</a>
+  <a href="#dinner">懇親会</a>
+</nav>
+
+<main id="list"></main>
+
+<script>
+const DATA = [
+  { id:"ktgh", jp:"7/14 光田綜合醫院(KTGH)", en:"Kuang Tien General Hospital / 台中・15:00~17:00",
+    groups:[
+      { label:"最優先", en:"Top priority", items:[
+        { pri:1,
+          jp:"CRCの雇用形態と人数は?(病院直接雇用、SMO派遣、混在?バックグラウンドと平均勤続年数も)",
+          en:"How are your CRCs employed, and how many are there? Directly by the hospital, from an SMO, or a mix? Also their backgrounds and average tenure.",
+          zh:"貴院的CRC採用哪一種聘僱方式?一共有多少人?是醫院直接聘僱、由SMO派遣,還是兩者都有?也想了解他們的專業背景和平均年資。" },
+        { pri:1,
+          jp:"台中という地方拠点で、症例集積・リクルートをどう工夫しているか?(台北の医学中心に患者が流れないのか)",
+          en:"As a regional site in Taichung, how do you manage recruitment and enrollment? Do patients tend to move to medical centers in Taipei?",
+          zh:"作為位於台中的區域型機構,貴院如何進行受試者招募與收案?病人會不會傾向前往台北的醫學中心?" },
+        { pri:1,
+          jp:"高齢患者・地方在住患者の治験参加障壁と支援策(交通費支援、家族の関与、来院負担の軽減)",
+          en:"What barriers do elderly and rural patients face in joining trials, and how do you support them?",
+          zh:"高齡病人和住在偏遠地區的病人,參加臨床試驗有哪些困難?貴院提供哪些協助?例如交通費補助、家屬參與,或減輕回診負擔。" },
+      ]},
+      { label:"時間があれば", en:"If time allows", items:[
+        { jp:"Phase IIIが約7割という構成は施設としての戦略的選択か?早期相に広げたい意向はあるか",
+          en:"Is the roughly 70% Phase III portfolio a strategic choice? Do you plan to expand into early-phase trials?",
+          zh:"貴院的臨床試驗約有七成是第三期,這是機構的策略性選擇嗎?未來有沒有拓展到早期臨床試驗的計畫?" },
+        { jp:"PIとCRCの関係性は?CRCの提案が業務改善に反映される仕組みはあるか(日本調査では「PIからの尊重」が定着の最大予測因子)",
+          en:"How would you describe the PI-CRC relationship? Is there a mechanism for CRC suggestions to improve operations? In our survey, respect from the PI was the strongest predictor of retention.",
+          zh:"請問醫師和CRC之間的關係如何?CRC的建議有沒有機制可以反映到作業改善上?在日本的調查中,「受到PI的尊重」是CRC留任最強的預測因子。" },
+        { jp:"患者さんへの治験情報提供チャネルは?(院内掲示、病院サイト、外来医師からの声かけの比率)",
+          en:"Through which channels do patients learn about trials here? Posters, the hospital website, or physicians during outpatient visits?",
+          zh:"病人主要透過哪些管道得知臨床試驗的資訊?例如院內海報、醫院網站,還是門診醫師的介紹?大概各占多少比例?" },
+        { jp:"ロボット支援治療など先端医療への投資は、治験受託の競争力にどうつながっているか",
+          en:"How does investment in advanced care such as robot-assisted treatment strengthen your competitiveness in attracting trials?",
+          zh:"貴院在達文西手術等先進醫療上的投資,對承接臨床試驗的競爭力有什麼幫助?" },
+      ]},
+      { label:"院内ツアーでのお願いフレーズ", en:"During the hospital tour", items:[
+        { jp:"CRCの執務スペースを見せていただけますか?(専用か相部屋かを確認)",
+          en:"Could we see the CRC workspace? (Check: dedicated or shared.)",
+          zh:"方便讓我們參觀一下CRC的辦公空間嗎?" },
+        { jp:"被験者への同意説明に使う個室はありますか?",
+          en:"Do you have private rooms for informed consent discussions?",
+          zh:"請問有沒有專門用來進行受試者同意說明的獨立空間?" },
+        { jp:"治験薬の管理方法と、外来の動線について教えてください",
+          en:"Could you show us how investigational products are managed, and the outpatient flow line?",
+          zh:"想了解一下試驗用藥的管理方式,還有門診的動線。" },
+      ]},
+    ]},
+  { id:"shh", jp:"7/15午前 雙和醫院(SHH)", en:"Shuang Ho Hospital (TMU) / 10:00~12:00",
+    groups:[
+      { label:"最優先", en:"Top priority", items:[
+        { pri:1,
+          jp:"CRCのキャリアラダーは?(ジュニア→シニア→マネジャーの段階、昇進要件、給与テーブルの有無)",
+          en:"Do you have a career ladder for CRCs? Junior to senior to manager, promotion criteria, salary scale.",
+          zh:"貴院是否有CRC的職涯升遷制度?例如初階、資深、主管的層級,升遷的條件,以及是否有薪資級距表。" },
+        { pri:1,
+          jp:"初期研修と継続教育の中身は?(修士卒CRCの比率、大学系の教育プログラム、認定資格の位置づけ)",
+          en:"What do initial training and continuing education look like? Share of master's-level CRCs, university-based programs, role of certification.",
+          zh:"新進人員訓練和繼續教育的內容是什麼?碩士學歷CRC的比例有多高?有沒有大學體系特有的培訓課程?認證資格的定位如何?" },
+        { pri:1,
+          jp:"離職率と、辞める理由・残る理由をどう把握しているか?(日本の比較データを提供できます)",
+          en:"How do you track turnover and why CRCs leave or stay? Happy to share comparable data from Japan.",
+          zh:"貴院如何掌握CRC的離職率,以及離職和留任的原因?我們很樂意分享日本的調查數據。" },
+      ]},
+      { label:"キャリア・体制", en:"Career and organization", items:[
+        { jp:"1人あたり担当プロトコル数・症例数の目安と、繁忙の平準化の方法",
+          en:"Typical number of protocols and subjects per CRC, and how workload is balanced across the team.",
+          zh:"每位CRC平均負責幾個試驗計畫、幾位受試者?工作量如何在團隊內平均分配?" },
+        { jp:"TMU系3病院(TMU・萬芳・雙和)間でCRCの人材共有や異動はあるか",
+          en:"Is there CRC sharing or rotation among the three TMU-system hospitals?",
+          zh:"北醫體系的三家醫院之間,CRC有沒有人力共用或輪調的制度?" },
+        { jp:"IRB体制と審査期間(施設IRBかJIRBか、契約からFPIまでの実績値)",
+          en:"IRB structure and review timelines. Institutional IRB or JIRB? Actual time from contract to first patient in?",
+          zh:"想了解貴院的IRB體制和審查時程。是院內IRB還是聯合IRB?從簽約到第一位受試者納入,實際大約需要多久?" },
+      ]},
+      { label:"患者さんへの情報提供・Patient Engagement", en:"Patient information and engagement", items:[
+        { jp:"同意説明の実際: 説明の担い手(医師とCRCの分担)、家族同席の頻度、意思決定への家族関与の度合い",
+          en:"Informed consent in practice: who explains, how often family members attend, and how much families influence the decision.",
+          zh:"想了解知情同意的實際做法。說明主要由醫師還是CRC負責?家屬陪同的頻率高嗎?家屬對決定的影響有多大?" },
+        { jp:"Plain Language対応(台湾語話者の高齢患者への説明の工夫、説明補助資材)",
+          en:"Plain-language practices: how you explain to elderly Taiwanese-speaking patients, and any supporting materials.",
+          zh:"對於說台語的高齡病人,在說明上有什麼特別的做法?有沒有輔助說明的資料?" },
+        { jp:"治験結果の患者さんへの還元(Plain Language Summary)の実施状況",
+          en:"Do you return trial results to participants, for example through plain language summaries?",
+          zh:"試驗結束後,會不會把結果回饋給受試者?例如提供白話文的結果摘要?" },
+        { jp:"プロトコルの実施可能性評価やデザインに患者の声を入れる仕組み(Patient Advisory的活動)の有無",
+          en:"Is there any mechanism, such as patient advisory activities, to bring patient voices into feasibility or protocol design?",
+          zh:"在評估可行性或設計試驗計畫時,有沒有納入病人意見的機制?例如病人諮詢委員會之類的活動?" },
+      ]},
+    ]},
+  { id:"tactc", jp:"7/15午後 TACTC", en:"Taiwan Alliance of Clinical Trial Centers / 15:00~17:00",
+    groups:[
+      { label:"最優先", en:"Top priority", items:[
+        { pri:1,
+          jp:"TACTC発足の狙いと、国際共同治験誘致における台湾のポジショニング戦略(日中韓・シンガポールとの差別化)",
+          en:"What is TACTC's mission, and how does Taiwan position itself to attract global trials?",
+          zh:"TACTC成立的宗旨是什麼?台灣在吸引國際多區域臨床試驗方面,如何定位自己?和日本、中國、韓國、新加坡有什麼差異化策略?" },
+        { pri:1,
+          jp:"CRC人材の国家レベルの育成・確保戦略はあるか?(全体数の把握、標準化された認定・研修制度の構想)",
+          en:"Is there a national strategy for developing and retaining the CRC workforce?",
+          zh:"台灣是否有國家層級的CRC人才培育與留任策略?是否掌握全國CRC的總數?有沒有規劃標準化的認證或訓練制度?" },
+        { pri:1,
+          jp:"Patient Engagementを国の治験政策にどう組み込んでいるか?(患者団体の参画、患者向け治験情報ポータル)",
+          en:"How is patient engagement built into national clinical trial policy?",
+          zh:"病人參與如何納入國家的臨床試驗政策?病友團體是否參與聯盟?面向病人的臨床試驗資訊平台建置情況如何?" },
+        { pri:1,
+          jp:"日本との協働可能性: CRC相互交流、東アジア共同治験でのsite readiness連携",
+          en:"Potential collaboration with Japan: CRC exchange programs and site-readiness cooperation for East Asian multiregional trials.",
+          zh:"想和大家討論與日本合作的可能性,例如CRC交流計畫,以及東亞多區域臨床試驗的機構整備合作。" },
+      ]},
+      { label:"制度・インフラ", en:"Systems and infrastructure", items:[
+        { jp:"全民健康保険(NHI)データベースをフィージビリティ・リクルートに使う枠組みと、データ利活用の規制",
+          en:"The framework for using the NHI database for feasibility and recruitment, and the regulations around data use.",
+          zh:"想了解運用全民健保資料庫進行可行性評估和受試者招募的框架,以及資料運用上的相關規範。" },
+        { jp:"eConsent・DCT要素の規制上の取り扱いと普及状況",
+          en:"Regulatory treatment and adoption of eConsent and decentralized trial elements.",
+          zh:"電子知情同意和分散式臨床試驗的做法,在法規上如何處理?目前普及的情況如何?" },
+        { jp:"施設間の契約・IRB手続きの標準化(日本のネットワーク型の課題と比較)",
+          en:"Standardization of contracts and IRB procedures across sites, a shared challenge with Japan's site networks.",
+          zh:"各機構之間的合約和IRB程序有沒有標準化?這也是日本機構網絡共同的課題,想和大家交換意見。" },
+        { jp:"台湾の一般市民の治験に対するイメージと、国としての啓発活動",
+          en:"Public perception of clinical trials in Taiwan, and national awareness activities.",
+          zh:"台灣一般民眾對臨床試驗的印象如何?國家層級有沒有推動相關的宣導活動?" },
+      ]},
+    ]},
+  { id:"dinner", jp:"懇親会にて", en:"At the networking dinner / 港都快炒 17:40~",
+    groups:[
+      { label:"柔らかい質問で本音を", en:"Icebreakers", items:[
+        { pri:1,
+          jp:"CRCの仕事で一番うれしい瞬間は?(日本では「患者さんとの関わり」が1位でした)",
+          en:"What moments make you happiest in your work as a CRC? In Japan, patient interaction topped the list.",
+          zh:"身為CRC,工作中最讓您開心的時刻是什麼?在日本的調查中,「與病人的互動」排名第一。" },
+        { pri:1,
+          jp:"台湾のCRCコミュニティ・勉強会文化(学会、SNSグループ、横のつながり)",
+          en:"Taiwan's CRC community and study-group culture: conferences, social media groups, peer networks.",
+          zh:"想了解台灣CRC的社群和學習文化,例如學會、社群媒體群組,還有同儕之間的交流。" },
+        { pri:1,
+          jp:"ぶっちゃけ、待遇と社会的認知度への本音",
+          en:"Honestly, how do you feel about compensation and public recognition of the CRC role?",
+          zh:"老實說,您對CRC的待遇和社會認知度,有什麼真心話想說?" },
+      ]},
+    ]},
+];
+
+const speakerIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>';
+
+const list = document.getElementById("list");
+DATA.forEach(sec => {
+  const s = document.createElement("section");
+  s.className = "sec"; s.id = sec.id;
+  s.innerHTML = `<div class="sec-head"><b>${sec.jp}</b><span>${sec.en}</span></div>`;
+  sec.groups.forEach(g => {
+    const hasPri = g.items.some(q => q.pri);
+    const gl = document.createElement("div");
+    gl.className = "grp" + (hasPri ? "" : " nopri");
+    gl.innerHTML = `${g.label}<small>${g.en}</small>`;
+    s.appendChild(gl);
+    g.items.forEach(q => {
+      const c = document.createElement("div");
+      c.className = "card" + (q.pri ? " pri" : "");
+      c.innerHTML = `
+        <div class="jp">${q.pri ? '<span class="star">★ </span>' : ''}${q.jp}</div>
+        <div class="en">${q.en}</div>
+        <div class="zh-row">
+          <div class="zh">${q.zh}</div>
+          <button class="say" aria-label="中国語で読み上げ">${speakerIcon}</button>
+        </div>`;
+      c.querySelector(".say").addEventListener("click", () => speak(q.zh, c));
+      s.appendChild(c);
+    });
+  });
+  list.appendChild(s);
+});
+
+const tips = document.createElement("div");
+tips.className = "tips";
+tips.innerHTML = "<b>使い方メモ</b><br>・スピーカーボタンで中文(國語)を読み上げます。もう一度押すと停止。<br>・「★のみ」で最優先質問だけの表示に切替。光田は時間が短いので★モード推奨。<br>・iPhoneがマナーモード(サイレントスイッチON)だと音が出ないことがあります。<br>・「ゆっくり」にすると先方に単語を確認してもらいながら再生できます。";
+list.appendChild(tips);
+
+// ===== 音声 =====
+let zhVoice = null, rate = 1.0, currentCard = null;
+
+function pickVoice(){
+  const vs = speechSynthesis.getVoices();
+  zhVoice =
+    vs.find(v => v.lang === "zh-TW") ||
+    vs.find(v => /zh[-_]TW/i.test(v.lang)) ||
+    vs.find(v => /^zh/i.test(v.lang)) || null;
+  document.getElementById("voiceNote").style.display =
+    (vs.length && !zhVoice) ? "block" : "none";
+}
+pickVoice();
+if (typeof speechSynthesis !== "undefined")
+  speechSynthesis.onvoiceschanged = pickVoice;
+
+function clearPlaying(){
+  if (currentCard) currentCard.classList.remove("playing");
+  currentCard = null;
+}
+
+function speak(text, card){
+  if (!("speechSynthesis" in window)) { alert("この端末は読み上げに対応していません"); return; }
+  if (currentCard === card && speechSynthesis.speaking){
+    speechSynthesis.cancel(); clearPlaying(); return;
+  }
+  speechSynthesis.cancel(); clearPlaying();
+  pickVoice();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = "zh-TW";
+  if (zhVoice) u.voice = zhVoice;
+  u.rate = rate;
+  u.onend = clearPlaying;
+  u.onerror = clearPlaying;
+  currentCard = card;
+  card.classList.add("playing");
+  speechSynthesis.speak(u);
+}
+
+document.getElementById("stopBtn").addEventListener("click", () => {
+  speechSynthesis.cancel(); clearPlaying();
+});
+const rS = document.getElementById("rSlow"), rN = document.getElementById("rNorm");
+rS.addEventListener("click", () => { rate = 0.75; rS.classList.add("on"); rN.classList.remove("on"); });
+rN.addEventListener("click", () => { rate = 1.0;  rN.classList.add("on"); rS.classList.remove("on"); });
+
+document.getElementById("starOnly").addEventListener("click", (e) => {
+  document.body.classList.toggle("staronly");
+  e.target.classList.toggle("on");
+});
+</script>
+</body>
+</html>
